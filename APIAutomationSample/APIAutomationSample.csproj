@@ -7,17 +7,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="5.10.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="3.1.10" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="NUnit" Version="3.12.0" />
-    <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" />
+    <PackageReference Include="NUnit" Version="3.13.1" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
     <PackageReference Include="SpecFlow" Version="3.8.7" />
+    <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.8.7" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\" />
     <Folder Include="Helpers\" />
-    <Folder Include="Steps\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Payloads\PostHappyPathPost.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
