@@ -4,44 +4,51 @@ using System.Linq;
 using System.Net.Http;
 using TechTalk.SpecFlow;
 using FluentAssertions;
+using APIAutomationSample.Helpers;
+using RestSharp;
+using Newtonsoft.Json.Linq;
 
 namespace APIAutomationSample.Steps
 {
     [Binding]
     public class PostSteps
     {
-        private HttpResponseMessage result;
+        private IRestResponse result;
         HttpClient client = new HttpClient();
+        dynamic jsonBody;
 
         [Given(@"a (.*) request body")]
-        public void GivenARequestBody(string type)
+        public void GivenARequestBody(string fileName)
         {
-            //take request 'type' JsonBody from Payloads
-
-            //returns jsonBody
+            jsonBody = FileUtility.SetPayloadBody(fileName);    
         }
 
         [When(@"I POST the request")]
-        public async void WhenIPostTheRequest(string jsonBody)
+        public void WhenIPostTheRequest()
         {
-            var content = new StringContent(jsonBody, System.Text.Encoding.UTF8, "application/json");
-            result = await client.PostAsync("https://jsonplaceholder.typicode.com/posts/1", content);
+            var client = new RestClient("https://jsonplaceholder.typicode.com/");
+            var request = new RestRequest("posts", Method.POST);
+            request.RequestFormat = DataFormat.Json;
+            request.AddJsonBody(jsonBody);
+            result = client.Execute(request);
         }
 
         [Then(@"the response should be a (.*) \(""(.*)""\) response")]
         public void ThenTheResponseShouldBeAResponse(int code, string description)
         {
-            result.StatusCode.Should().Be(code);
-            result.ReasonPhrase.Should().Be(description);
+            int statusCode = (int)result.StatusCode;
+            statusCode.Should().Be(code);
+            result.StatusDescription.Should().Be(description);
         }
 
         [Then(@"the response body should be what I expect")]
         public void ThenTheResponseBodyShouldBeWhatIExpect()
         {
-            result.Content.ToString().Should().Contain("id");
-            //parse the Json response and assert each property
+            var jObject = JObject.Parse(result.Content);
+            jObject.GetValue("title").ToString().Should().Contain("foo");
+            jObject.GetValue("body").ToString().Should().Contain("bar");
+            jObject.GetValue("userId").ToObject<int>().Should().Be(1);
+            jObject.GetValue("id").ToString().Should().NotBeNullOrEmpty();
         }
-
-
     }
 }

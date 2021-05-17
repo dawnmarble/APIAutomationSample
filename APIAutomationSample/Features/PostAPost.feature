@@ -5,7 +5,7 @@
 
 @Smoke-HappyPath
 Scenario: Can post valid post
-	Given a <happypath> request body
+	Given a Post Happy Path Post.json request body
 	When I POST the request
 	Then the response should be a 201 ("Created") response
 	And the response body should be what I expect
