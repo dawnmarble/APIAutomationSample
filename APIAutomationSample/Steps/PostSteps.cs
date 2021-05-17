@@ -6,6 +6,7 @@ using TechTalk.SpecFlow;
 using FluentAssertions;
 using APIAutomationSample.Helpers;
 using RestSharp;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace APIAutomationSample.Steps
@@ -44,11 +45,14 @@ namespace APIAutomationSample.Steps
         [Then(@"the response body should be what I expect")]
         public void ThenTheResponseBodyShouldBeWhatIExpect()
         {
-            var jObject = JObject.Parse(result.Content);
-            jObject.GetValue("title").ToString().Should().Contain("foo");
-            jObject.GetValue("body").ToString().Should().Contain("bar");
-            jObject.GetValue("userId").ToObject<int>().Should().Be(1);
-            jObject.GetValue("id").ToString().Should().NotBeNullOrEmpty();
+            Post jsonRequestBody = JsonConvert.DeserializeObject<Post>(jsonBody);
+            Post jsonResponseBody = JsonConvert.DeserializeObject<Post>(result.Content);
+
+            //var jObject = JObject.Parse(result.Content);
+            jsonResponseBody.title.Should().Be(jsonRequestBody.title);
+            jsonResponseBody.body.Should().Be(jsonRequestBody.body);
+            jsonResponseBody.userId.Should().Be(jsonRequestBody.userId);
+            jsonResponseBody.body.Should().NotBeNullOrEmpty();
         }
     }
 }
