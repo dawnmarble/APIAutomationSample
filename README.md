@@ -22,8 +22,8 @@ on exploratory testing, building test tools and providing larger coverage on a r
 **Prerequisites**<br>A current version of Visual Studio with C# is required to run these tests.
 <br>
 https://specflow.org/for-teams/tester/
-
 <br>
+
 **Installing**
 1. Fork this Repository on your local computer.
 <br>
