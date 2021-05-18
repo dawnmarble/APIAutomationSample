@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace APIAutomationSample.Features
+namespace APIAutomationSample.Features.Comments
 {
     using TechTalk.SpecFlow;
     using System;
@@ -20,24 +20,24 @@ namespace APIAutomationSample.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.8.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Posts")]
-    public partial class PostsFeature
+    [NUnit.Framework.DescriptionAttribute("Getting Comments")]
+    public partial class GettingCommentsFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "PostAPost.feature"
+#line 1 "Getting Comments.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Posts", " In order to make sure I can interact with Posts via the JSONPlaceholder API\r\n As" +
-                    " a consumer of this API\r\n I want to be sure I am able to receive the correct res" +
-                    "ponse when I send request", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/Comments", "Getting Comments", "  In order to make sure I can interact with Posts via the JSONPlaceholder API\r\n A" +
+                    "s a consumer of this API\r\n I want to be sure I am able to receive Comments on a " +
+                    "Post", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -76,15 +76,13 @@ namespace APIAutomationSample.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Can post valid post")]
-        [NUnit.Framework.CategoryAttribute("Smoke-HappyPath")]
-        public virtual void CanPostValidPost()
+        [NUnit.Framework.DescriptionAttribute("Can get all comments for a post")]
+        public virtual void CanGetAllCommentsForAPost()
         {
-            string[] tagsOfScenario = new string[] {
-                    "Smoke-HappyPath"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Can post valid post", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 7
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Can get all comments for a post", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -104,31 +102,32 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
+#line 7
+ testRunner.When("I execute a \'GET\' Post where PostId is 1/comments", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
 #line 8
- testRunner.Given("a Happy Path Post.json request body", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Then("the response should be a 200 (\"OK\") response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 9
- testRunner.When("I POST the request", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 10
- testRunner.Then("the response should be a 201 (\"Created\") response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 11
- testRunner.And("the response body should be what I expect", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the response body should not be empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Can post empty post")]
-        public virtual void CanPostEmptyPost()
+        [NUnit.Framework.DescriptionAttribute("Can filter all comments for a post")]
+        [NUnit.Framework.TestCaseAttribute("postId", "1", null)]
+        [NUnit.Framework.TestCaseAttribute("email", "Eliseo@gardner.biz", null)]
+        public virtual void CanFilterAllCommentsForAPost(string parameter, string value, string[] exampleTags)
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Can post empty post", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 14
-this.ScenarioInitialize(scenarioInfo);
+            argumentsOfScenario.Add("parameter", parameter);
+            argumentsOfScenario.Add("value", value);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Can filter all comments for a post", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 11
+ this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
             bool isFeatureIgnored = default(bool);
@@ -147,14 +146,14 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 16
- testRunner.Given("a Empty Request Post.json request body", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 12
+ testRunner.Given(string.Format("I call \'GET\' Post where <paramater> is {0}", value), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 17
- testRunner.When("I POST the request", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 13
+ testRunner.Then("the response should be a 200 (\"OK\") response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 18
- testRunner.Then("the response should be a 400 (\"Bad Request\") response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 14
+ testRunner.And("the response body should not be empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();

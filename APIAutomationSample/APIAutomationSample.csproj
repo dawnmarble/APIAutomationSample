@@ -20,12 +20,59 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Features\Comments\Getting Comments.feature.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Features\Comments\Posting a Comment.feature.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Features\Deleting a Post.feature.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Features\Getting a Post.feature.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Features\Updating Posts.feature.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Payloads\Empty Request Post.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Payloads\Happy Path Comment.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Payloads\Happy Path Post.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Payloads\Update Title Post.Json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <SpecFlowFeatureFiles Update="Features\Comments\Posting a Comment.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Posting a Comment.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Features\Deleting a Post.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Deleting a Post.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Features\Getting a Post.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Getting a Post.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Features\Comments\Getting Comments.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Getting Comments.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Features\Updating Posts.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Updating Posts.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
   </ItemGroup>
 
 </Project>
