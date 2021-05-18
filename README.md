@@ -5,12 +5,12 @@ In this Repo there is a C# API test automation project using Specflow framework.
  
 
 ## Table of Contents
-1. [ UI & Services Automation ](#UI)
+1. [ API Automation ](#API)
 2. [ Postman Collections](#postman)
 <br>
 <br>
 <br>
-<a name="UI"></a>
+<a name="API"></a>
 
 ## Getting Started with the API Automation Solution
 This project contains smoke and functional tests for the JSONPlaceholder API.  Unfortunately, 
